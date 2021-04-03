@@ -46,14 +46,16 @@
     "trailingComma": "all"
   },
   "dependencies": {
-    "@solana/web3.js": "^0.90.0",
-    "bn.js": "^5.1.2",
-    "buffer-layout": "^1.2.0"
   },
   "browserslist": [
     ">0.2%",
     "not dead",
     "not op_mini all",
     "maintained node versions"
-  ]
+  ],
+  "peerDependencies": {
+    "@solana/web3.js": "^0.90.0",
+    "bn.js": "^5.1.2",
+    "buffer-layout": "^1.2.0"
+  }
 }
