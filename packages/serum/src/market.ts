@@ -566,6 +566,7 @@ export class Market {
     );
     const transaction = new Transaction();
     const signers: Account[] = [];
+    let createdOpenOrdersKey;
 
     // Fetch an SRM fee discount key and rate if the market supports discounts and it is not supplied
     let possibleFeeRate = feeRate;
@@ -606,6 +607,7 @@ export class Market {
         ),
       );
       openOrdersAddress = account.publicKey;
+      createdOpenOrdersKey = account.publicKey;
       signers.push(account);
       // refresh the cache of open order accounts on next fetch
       this._openOrdersAccountsCache[ownerAddress.toBase58()].ts = 0;
@@ -684,7 +686,7 @@ export class Market {
       );
     }
 
-    return { transaction, signers, payer: owner };
+    return { createdOpenOrdersKey, transaction, signers, payer: owner };
   }
 
   makePlaceOrderInstruction<T extends PublicKey | Account>(
